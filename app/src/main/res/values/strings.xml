@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SevenSisters</string>
+    <string name="home_button">HomeButton</string>
+    <string name="profile_info">ProfileInfo</string>
+    <string name="discover">Discover</string>
+    <string name="add_trip">Add Trip</string>
+</resources>
