@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/trip_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddTrip">
+
+  <TextView
+      android:id="@+id/textView"
+      android:layout_width="246dp"
+      android:layout_height="62dp"
+      android:layout_marginTop="45dp"
+      android:textSize="45sp"
+      android:textAlignment ="center"
+      android:text="@string/trip_details"
+      android:textColor="@color/white"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.498"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <LinearLayout
+      android:id="@+id/admin_name"
+      android:layout_width="220dp"
+      android:layout_height="40dp"
+      android:layout_marginLeft="25dp"
+      android:layout_marginTop="45dp"
+      android:background="#62715E"
+      android:orientation="horizontal"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.316"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/textView">
+
+    <ImageView
+        android:id="@+id/user_icon"
+        android:layout_width="50dp"
+        android:background="#9ABC68"
+        android:contentDescription="@string/admin_icon"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/user_icon"
+        tools:layout_editor_absoluteX="51dp"
+        tools:layout_editor_absoluteY="167dp" />
+
+    <EditText
+        android:id="@+id/name_input"
+        android:layout_width="200dp"
+        android:background="#9ABC68"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/name"
+        android:textColor="@color/white"
+        tools:layout_editor_absoluteX="116dp"
+        tools:layout_editor_absoluteY="167dp" />
+  </LinearLayout>
+
+  <EditText
+      android:id="@+id/tourist_count"
+      android:layout_width="220dp"
+      android:layout_height="40dp"
+      android:layout_marginTop="30dp"
+      android:layout_marginLeft="25dp"
+      android:background="#9ABC68"
+      android:textColor="@color/white"
+      android:ems="10"
+      android:inputType="number"
+      android:hint="@string/tourist_count"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.316"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/admin_name" />
+
+  <LinearLayout
+      android:id="@+id/linearLayout"
+      android:layout_width="220dp"
+      android:layout_height="40dp"
+      android:layout_marginLeft="25dp"
+      android:layout_marginTop="30dp"
+      android:orientation="horizontal"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.316"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tourist_count">
+
+    <ImageView
+        android:id="@+id/map_pin"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#9ABC68"
+        android:contentDescription="compass_pin"
+        app:srcCompat="@drawable/map_pin" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:id="@+id/destination_string"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#9ABC68"
+        android:ems="10"
+        android:hint="@string/destination"
+        android:inputType="textPersonName"
+        android:textColor="@color/white" />
+  </LinearLayout>
+
+  <include
+      android:id="@+id/include"
+      layout="@layout/taskbar"
+      android:layout_width="match_parent"
+      android:layout_height="65dp"
+      android:background="#9ABC68"
+      android:backgroundTint="#9ABC68"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
+
+  <Button
+      android:id="@+id/add_trip_button"
+      android:layout_width="80dp"
+      android:layout_height="45dp"
+      android:layout_marginBottom="10dp"
+      android:backgroundTint="#9ABC68"
+      android:clickable="true"
+      android:focusable="true"
+      android:padding="5dp"
+      android:text="Add"
+      android:textAlignment="center"
+      android:textColor="@color/white"
+      android:textSize="15sp"
+      android:textStyle="bold"
+      app:layout_constraintBottom_toTopOf="@+id/include"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.498"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/end_date"
+      app:layout_constraintVertical_bias="1.0" />
+
+  <DatePicker
+      android:id="@+id/start_date"
+      android:layout_width="220dp"
+      android:layout_height="90dp"
+      android:layout_marginTop="16dp"
+      android:layout_marginEnd="32dp"
+      android:maxDate=""
+      android:minDate=""
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+  <DatePicker
+      android:id="@+id/end_date"
+      android:layout_width="220dp"
+      android:layout_height="90dp"
+      android:layout_marginTop="20dp"
+      android:layout_marginEnd="32dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/start_date" />
+
+  <Button
+      android:id="@+id/start_date_text"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="10dp"
+      android:layout_marginTop="20dp"
+      android:backgroundTint="#9ABC68"
+      android:text="@string/start_journey"
+      android:textSize="10sp"
+      app:layout_constraintEnd_toStartOf="@+id/start_date"
+      app:layout_constraintHorizontal_bias="0.305"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/start_date" />
+
+  <Button
+      android:id="@+id/end_date_text"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="10dp"
+      android:layout_marginTop="20dp"
+      android:backgroundTint="#9ABC68"
+      android:text="End At"
+      android:textSize="10sp"
+      app:layout_constraintEnd_toStartOf="@+id/end_date"
+      app:layout_constraintHorizontal_bias="0.475"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="@+id/end_date" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

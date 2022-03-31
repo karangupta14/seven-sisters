@@ -6,4 +6,292 @@
     android:layout_height="match_parent"
     tools:context=".Discover">
 
+    <ScrollView
+        android:id="@+id/seven_states"
+        android:layout_width="match_parent"
+        android:layout_height="610dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.gridlayout.widget.GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="730dp"
+            app:columnCount="2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:rowCount="4"
+            tools:ignore="MissingConstraints">
+
+            <LinearLayout
+                android:id="@+id/assam"
+                android:layout_width="175dp"
+                android:layout_height="300dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="vertical"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                app:layout_column="0"
+                app:layout_row="0">
+
+                <ImageButton
+                    android:id="@+id/assam_image"
+                    android:layout_width="170dp"
+                    android:layout_gravity="center"
+                    android:layout_height="220dp"
+                    android:background="@color/white"
+                    android:tag="Assam"
+                    android:tooltipText="assam"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:layout_column="0"
+                    app:layout_row="0"
+                    app:srcCompat="@drawable/assam_discover" />
+
+                <TextView
+                    android:id="@+id/assam_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:text="@string/assam"
+                    android:textSize="20sp"
+                    android:textStyle="italic|bold"
+                    app:layout_column="1"
+                    app:layout_row="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/meghalaya"
+                android:layout_width="175dp"
+                android:layout_height="300dp"
+                android:orientation="vertical"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_column="1"
+                app:layout_row="0">
+
+                <ImageButton
+                    android:id="@+id/meghalaya_image"
+                    android:layout_width="170dp"
+                    android:layout_gravity="center"
+                    android:layout_height="220dp"
+                    android:backgroundTint="@color/white"
+                    android:layout_marginRight="5dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:layout_column="1"
+                    app:layout_row="0"
+                    app:srcCompat="@drawable/meghalaya_discover" />
+
+                <TextView
+                    android:id="@+id/meghalaya_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:text="@string/meghalaya"
+                    android:textSize="20sp"
+                    android:textStyle="italic|bold"
+                    app:layout_column="1"
+                    app:layout_row="0" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tripura"
+                android:layout_width="175dp"
+                android:layout_height="300dp"
+                android:orientation="vertical"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_column="0"
+                app:layout_row="1">
+
+                <ImageButton
+                    android:id="@+id/tripura_image"
+                    android:layout_width="170dp"
+                    android:layout_height="220dp"
+                    android:backgroundTint="@color/white"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:layout_column="0"
+                    app:layout_row="1"
+                    app:srcCompat="@drawable/tripura_discover" />
+
+                <TextView
+                    android:id="@+id/tripura_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:text="@string/tripura"
+                    android:textSize="20sp"
+                    android:textStyle="italic|bold"
+                    app:layout_column="0"
+                    app:layout_row="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mizoram"
+                android:layout_width="175dp"
+                android:layout_height="300dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:orientation="vertical"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_column="1"
+                app:layout_row="1">
+
+                <ImageButton
+                    android:id="@+id/mizoram_image"
+                    android:layout_width="170dp"
+                    android:layout_height="220dp"
+                    android:background="@color/white"
+                    android:tag="Mizoram"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:layout_column="0"
+                    app:layout_row="0"
+                    app:srcCompat="@drawable/mizoram_discover" />
+
+                <TextView
+                    android:id="@+id/mizoram_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:text="@string/mizoram"
+                    android:tag="Mizoram"
+                    android:textSize="20sp"
+                    android:textStyle="italic|bold"
+                    app:layout_column="1"
+                    app:layout_row="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/nagaland"
+                android:layout_width="175dp"
+                android:layout_height="300dp"
+                android:orientation="vertical"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_column="0"
+                app:layout_row="2">
+
+                <ImageButton
+                    android:id="@+id/nagaland_image"
+                    android:layout_width="170dp"
+                    android:layout_height="220dp"
+                    android:background="@color/white"
+                    android:tag="Nagaland"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:layout_column="0"
+                    app:layout_row="2"
+                    app:srcCompat="@drawable/nagaland_discover" />
+
+                <TextView
+                    android:id="@+id/nagaland_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:text="@string/nagaland"
+                    android:textSize="20sp"
+                    android:textStyle="italic|bold"
+                    app:layout_column="0"
+                    app:layout_row="2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/manipur"
+                android:layout_width="175dp"
+                android:layout_height="300dp"
+                android:orientation="vertical"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_column="1"
+                app:layout_row="2">
+
+                <ImageButton
+                    android:id="@+id/manipur_image"
+                    android:layout_width="170dp"
+                    android:layout_height="220dp"
+                    android:background="@color/white"
+                    android:tag="Manipur"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:layout_column="1"
+                    app:layout_row="2"
+                    app:srcCompat="@drawable/manipur_discover" />
+
+                <TextView
+                    android:id="@+id/manipur_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:text="@string/manipur"
+                    android:textSize="20sp"
+                    android:textStyle="italic|bold"
+                    app:layout_column="1"
+                    app:layout_row="2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/arunachal"
+                android:layout_width="175dp"
+                android:layout_height="300dp"
+                android:orientation="vertical"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_column="0"
+                app:layout_row="3">
+
+                <ImageButton
+                    android:id="@+id/arunachal_image"
+                    android:layout_width="170dp"
+                    android:layout_height="220dp"
+                    android:background="@color/white"
+                    android:tag="Arunachal"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:layout_column="1"
+                    app:layout_row="2"
+                    app:srcCompat="@drawable/arunachal_discover" />
+                <TextView
+                    android:id="@+id/arunachal_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:text="@string/arunachal_pradesh"
+                    android:textSize="20sp"
+                    android:textStyle="italic|bold"
+                    app:layout_column="1"
+                    app:layout_row="2" />
+            </LinearLayout>
+
+        </androidx.gridlayout.widget.GridLayout>
+    </ScrollView>
+
+    <include
+        layout="@layout/taskbar"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

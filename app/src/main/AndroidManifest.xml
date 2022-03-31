@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SevenSisters">
         <activity
+            android:name=".SignUp"
+            android:exported="false" />
+        <activity
+            android:name=".StateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddTrip"
+            android:exported="false" />
+        <activity
             android:name=".Discover"
             android:exported="false" />
         <activity
