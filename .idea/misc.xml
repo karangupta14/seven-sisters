@@ -3,11 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_add_trip.xml" value="0.18981481481481483" />
+        <entry key="app/src/main/res/layout/activity_add_trip.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_discover.xml" value="0.15" />
         <entry key="app/src/main/res/layout/activity_hotel_list.xml" value="0.17135416666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.16" />
-        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_maps.xml" value="0.17135416666666667" />
+        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.17135416666666667" />
         <entry key="app/src/main/res/layout/activity_state.xml" value="0.18" />
         <entry key="app/src/main/res/layout/history_item.xml" value="0.25" />
@@ -15,6 +16,9 @@
         <entry key="app/src/main/res/layout/location_image.xml" value="0.17135416666666667" />
         <entry key="app/src/main/res/layout/location_item.xml" value="0.17135416666666667" />
         <entry key="app/src/main/res/layout/taskbar.xml" value="0.17135416666666667" />
+        <entry key="app/src/main/res/layout/trip_experience_item.xml" value="1.0" />
+        <entry key="app/src/main/res/layout/trip_experience_list_item.xml" value="1.028125" />
+        <entry key="app/src/main/res/layout/trip_item.xml" value="0.17135416666666667" />
       </map>
     </option>
   </component>

@@ -83,7 +83,7 @@ public class LocationAdapter extends ArrayAdapter<location> {
         location_description.setText(description);
         InputStream inputStream2=null;
         try {
-            inputStream2 = getContext().getAssets().open("locations/"+state+"/"+position+"/name.txt");
+            inputStream2 = getContext().getAssets().open("locations/"+state+"/"+position+"/Name.txt");
         } catch (IOException e) {
             e.printStackTrace();
             Log.i(TAG, "getView: file does not exist----------------------------");
@@ -98,7 +98,7 @@ public class LocationAdapter extends ArrayAdapter<location> {
         location_name.setText(loc_name);
         int flag=1,im_no=1;
         //populating image list
-        /*LinearLayout linearLayout = listItem.findViewById(R.id.location_image_list);
+        LinearLayout linearLayout = listItem.findViewById(R.id.location_image_list);
         while(flag==1){
             InputStream file = null;
             try {
@@ -120,12 +120,13 @@ public class LocationAdapter extends ArrayAdapter<location> {
                     ImageView image = linearLayout.findViewById(R.id.image3);
                     image.setImageDrawable(d);
                 }
+                im_no++;
             }
             else{
                 flag=0;
                 Log.i(TAG, "getView: image is not there----------------------");
             }
-        }*/
+        }
         return listItem;
     }
 }

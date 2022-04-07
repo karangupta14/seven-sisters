@@ -48,7 +48,7 @@ public class StateActivity extends AppCompatActivity {
         }
         if(state.equals("manipur")){
             findViewById(R.id.state_image).setBackgroundResource(R.drawable.manipur_state);
-            state_name.setText("Manipur");
+            state_name.setText("manipur");
         }
         if(state.equals("mizoram")) {
             findViewById(R.id.state_image).setBackgroundResource(R.drawable.mizoram_state);
@@ -91,7 +91,7 @@ public class StateActivity extends AppCompatActivity {
         }
         listView.setAdapter(locations);
         Log.i(TAG, "onCreate: before selection -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        TextView hotel = findViewById(R.id.hotel_dining_tab);
+        /*TextView hotel = findViewById(R.id.hotel_dining_tab);
 
         hotel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,8 +124,8 @@ public class StateActivity extends AppCompatActivity {
                 }
                 listView.setAdapter(hotels);
             }
-        });
-        TextView tourism = findViewById(R.id.tourism_tab);
+        });*/
+        /*TextView tourism = findViewById(R.id.tourism_tab);
         tourism.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -157,7 +157,7 @@ public class StateActivity extends AppCompatActivity {
                 }
                 listView.setAdapter(locations);
             }
-        });
+        });*/
 
                     /*case 2:         //culture and history
                         if(state.equals("assam")) {

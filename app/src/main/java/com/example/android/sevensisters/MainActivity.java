@@ -1,5 +1,7 @@
 package com.example.android.sevensisters;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +9,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+
+import com.example.android.sevensisters.data.MyDbHandler;
 
 import java.util.Map;
 import java.util.Set;
@@ -17,14 +23,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferences sdp_signup =  getSharedPreferences("MyPREFERENCES", Context.MODE_MULTI_PROCESS);
+        SharedPreferences sdp_signup =  getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sdp_signup.edit();
         Intent signup = new Intent(this,SignUp.class);
-        if(!sdp_signup.contains("signup_key"))
+        if(sdp_signup.contains("signup") == false)
         {
-             editor.putBoolean("signup_key",true);
+             //openOrCreateDatabase()
+             MyDbHandler dbHandler = new MyDbHandler(MainActivity.this);
+             editor.putBoolean("signup",true).apply();
              editor.apply();
+             Log.i(TAG, "onCreate: sign_up will start-------------------------------------- ");
              startActivity(signup);
+        }
+        else{
+            Log.i(TAG, "onCreate: sign_up will not start-------------------------------------- ");
         }
         //SharedPreferences sharedPreferences = this.getSharedPreferences();
         setContentView(R.layout.activity_main);

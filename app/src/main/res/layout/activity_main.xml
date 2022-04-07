@@ -16,10 +16,9 @@
     <!--        app:layout_constraintTop_toTopOf="parent" />-->
     <ImageView
         android:id="@+id/iv1"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="250dp"
         android:layout_marginTop="20dp"
-        android:paddingLeft="20dp"
         android:scaleType="fitStart"
         android:src="@drawable/mountain"
         app:layout_constraintEnd_toEndOf="parent"
