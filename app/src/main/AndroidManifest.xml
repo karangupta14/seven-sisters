@@ -9,7 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SevenSisters">
-
+        <activity
+            android:name=".BlogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SignIn"
+            android:exported="false" />
+        <activity
+            android:name=".CreateBlog"
+            android:exported="false" />
+        <activity
+            android:name=".EditTrip"
+            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -31,19 +42,22 @@
             android:label="@string/title_activity_maps" />
         <activity
             android:name=".SignUp"
-            android:exported="false" />
+            android:exported="false"
+            android:noHistory="true" />
         <activity
             android:name=".StateActivity"
             android:exported="false" />
         <activity
             android:name=".AddTrip"
-            android:exported="false" />
+            android:exported="false"
+            android:noHistory="true" />
         <activity
             android:name=".Discover"
             android:exported="false" />
         <activity
             android:name=".Profile"
-            android:exported="false" />
+            android:exported="false"
+            android:noHistory="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

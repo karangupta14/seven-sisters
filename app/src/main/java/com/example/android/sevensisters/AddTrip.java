@@ -204,7 +204,7 @@ public class AddTrip extends AppCompatActivity {
         Button set_start_date = findViewById(R.id.set_start_date);
         Button set_end_date = findViewById(R.id.set_end_date);
         final int[] start_day = {1};
-        final int[] start_month = { 1 };
+        final int[] start_month = {1};
         final int[] start_year={1};
         set_start_date.setOnClickListener(new View.OnClickListener() {
             @Override

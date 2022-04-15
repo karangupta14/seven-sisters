@@ -1,8 +1,8 @@
 {
   "project_info": {
     "project_number": "79287690367",
-    "project_id": "sevensisters-8bd65",
     "firebase_url": "https://sevensisters-8bd65-default-rtdb.firebaseio.com",
+    "project_id": "sevensisters-8bd65",
     "storage_bucket": "sevensisters-8bd65.appspot.com"
   },
   "client": [

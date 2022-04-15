@@ -27,6 +27,7 @@ public class StateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_state);
         Bundle extras = getIntent().getExtras();
         String state;
+
         if(savedInstanceState == null) {
             state = extras.getString("state");
         }

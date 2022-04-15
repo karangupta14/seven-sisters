@@ -7,7 +7,7 @@
 
 
     <LinearLayout
-        android:id="@+id/trip_id"
+        android:id="@+id/trip_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
@@ -23,8 +23,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         >
-
-
         <ImageView
             android:id="@+id/destination_pic"
             android:layout_width="match_parent"

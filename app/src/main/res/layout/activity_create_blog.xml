@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateBlog">
+
+    <EditText
+        android:id="@+id/create_blog_display_name"
+        android:layout_width="330dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="@string/display_name"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_blog_heading" />
+
+    <EditText
+        android:id="@+id/create_blog_title"
+        android:layout_width="330dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Title"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_blog_display_name" />
+
+    <EditText
+        android:id="@+id/blog_text_body"
+        android:layout_width="339dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/rounded_corner_item"
+        android:ems="10"
+        android:gravity="left|top"
+        android:hint="Write Something"
+        android:inputType="textMultiLine"
+        android:minLines="4"
+        android:maxLines="12"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_blog_title" />
+    <!--
+    <Button
+        android:id="@+id/upload_pic_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="#9ABC68"
+        android:text="Upload pictures"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/blog_pic_list"
+        app:layout_constraintVertical_bias="0.0" />
+    -->
+    <TextView
+        android:id="@+id/create_blog_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="write a travel blog"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/blog_pic_list"
+        android:layout_width="374dp"
+        android:layout_height="145dp"
+        android:layout_marginTop="25dp"
+        android:autofillHints="no pictures uploaded"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/blog_text_body" />
+
+    <Button
+        android:id="@+id/post_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="16dp"
+        android:textSize="10dp"
+        android:backgroundTint="#9ABC68"
+        android:text="Post"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/blog_pic_list" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

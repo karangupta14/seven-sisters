@@ -4,6 +4,7 @@ package com.example.android.sevensisters;
 import static android.content.ContentValues.TAG;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.android.sevensisters.data.Trip;
@@ -23,11 +25,6 @@ import java.util.List;
 
 public class TripAdapter extends ArrayAdapter<Trip> {
 
-    String locations;
-    String state;
-    String tripId;
-    String start_date;
-    String end_date;
     public TripAdapter(Context context, List<Trip> objects){
         super(context,0,objects);
 
@@ -40,6 +37,7 @@ public class TripAdapter extends ArrayAdapter<Trip> {
             listItem = LayoutInflater.from(getContext()).inflate(R.layout.history_item,parent,false);
         }
         Trip trip_object = getItem(position);
+
         TextView destination = listItem.findViewById(R.id.trip_state);
         String state = trip_object.getState_name();
         TextView date = listItem.findViewById(R.id.time_interval);

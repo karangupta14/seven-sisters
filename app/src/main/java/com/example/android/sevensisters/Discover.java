@@ -83,8 +83,16 @@ public class Discover extends AppCompatActivity {
                 finish();
             }
         });
-
-        View profile = findViewById(R.id.profile_icon);
+        View blog = findViewById(R.id.blog_icon);
+        Intent blogIntent = new Intent(this,BlogActivity.class);
+        blog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(blogIntent);
+                overridePendingTransition(0, 0);
+            }
+        });
+        /*View profile = findViewById(R.id.profile_icon);
         Intent profileIntent = new Intent(this,Profile.class);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,7 +101,7 @@ public class Discover extends AppCompatActivity {
                 overridePendingTransition(0, 0);
                 finish();
             }
-        });
+        });*/
 
         View addTrip = findViewById(R.id.add_trip_icon);
         Intent addTripIntent = new Intent(this,AddTrip.class);

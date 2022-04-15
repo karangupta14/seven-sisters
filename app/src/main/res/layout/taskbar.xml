@@ -25,13 +25,13 @@
             app:srcCompat="@drawable/home_icon" />
 
         <ImageButton
-            android:id="@+id/profile_icon"
+            android:id="@+id/blog_icon"
             android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/white"
             android:contentDescription="@string/profile_info"
-            app:srcCompat="@drawable/profile_info" />
+            app:srcCompat="@drawable/blog_icon" />
 
         <ImageButton
             android:id="@+id/discover_icon"

@@ -14,6 +14,8 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.android.sevensisters.data.MyDbHandler;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Map;
 import java.util.Set;
@@ -31,9 +33,11 @@ public class MainActivity extends AppCompatActivity {
              //openOrCreateDatabase()
              MyDbHandler dbHandler = new MyDbHandler(MainActivity.this);
              editor.putBoolean("signup",true).apply();
+             editor.putBoolean("logged_in",false).apply();
              editor.apply();
              Log.i(TAG, "onCreate: sign_up will start-------------------------------------- ");
              startActivity(signup);
+
         }
         else{
             Log.i(TAG, "onCreate: sign_up will not start-------------------------------------- ");
@@ -58,6 +62,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        View blog = findViewById(R.id.blog_icon);
+        Intent blogIntent = new Intent(this,BlogActivity.class);
+        blog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(blogIntent);
+                overridePendingTransition(0, 0);
+            }
+        });
         View discover = findViewById(R.id.discover_icon);
         Intent discoverIntent = new Intent(this,Discover.class);
         discover.setOnClickListener(new View.OnClickListener() {
@@ -77,6 +90,5 @@ public class MainActivity extends AppCompatActivity {
                 overridePendingTransition(0, 0);
             }
         });
-
     }
 }
