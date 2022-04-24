@@ -28,6 +28,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+
     }
 
     /**
@@ -42,10 +44,32 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
+        Bundle extras = getIntent().getExtras();
+        String state = extras.getString("state");
+        LatLng lat = new LatLng(26, 92);
+        if(state.equals("meghalaya")){
+            lat = new LatLng(25, 90);
+        }
+        if(state.equals("tripura")){
+            lat = new LatLng(23, 91);
+        }
+        if(state.equals("mizoram")){
+            lat = new LatLng(21, 92);
+        }
+        if(state.equals("arunachal")){
+            lat = new LatLng(28, 95);
+        }
+        if(state.equals("manipur")){
+            lat = new LatLng(24, 93);
+        }
+        if(state.equals("nagaland")){
+            lat = new LatLng(26, 94);
+        }
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        //LatLng sydney = new LatLng(-34, 151);
+        mMap.addMarker(new MarkerOptions().position(lat).title("Marker in Sydney"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(lat));
+
+
     }
 }

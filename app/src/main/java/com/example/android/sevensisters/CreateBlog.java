@@ -2,18 +2,23 @@ package com.example.android.sevensisters;
 
 import static android.provider.ContactsContract.Intents.Insert.ACTION;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
@@ -35,13 +40,20 @@ public class CreateBlog extends AppCompatActivity {
         post_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final int[] max = new int[1];
                 String display_name = display_name_edit.getText().toString();
                 String title = title_edit.getText().toString();
                 String content = text_body_edit.getText().toString();
-                if(display_name.equals("") || title.equals("") || content.equals("")) {
+                if(display_name.equals("") || title.equals("") ){
                     Toast toast = new Toast(CreateBlog.this);
                     toast.setDuration(Toast.LENGTH_LONG);
                     toast.setText("credentials incomplete");
+                    return;
+                }
+                if(content.length() <= 150){
+                    Toast toast = new Toast(CreateBlog.this);
+                    toast.setDuration(Toast.LENGTH_LONG);
+                    toast.setText("length of blog should at least be 150 characters");
                     return;
                 }
                 HashMap<String,String> map = new HashMap<>();
@@ -49,11 +61,29 @@ public class CreateBlog extends AppCompatActivity {
                 map.put("title",title);
                 String username = srp.getString("username",null);
                 map.put("content",content);
+                map.put("username",username);
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference("blogs");
-                ref.child(username);
-                DatabaseReference dref = ref.child(username);
-                dref.setValue(map);
-                finish();
+                ref.orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        max[0] =0;
+                        for(DataSnapshot snapshoti : snapshot.getChildren()){
+                            if(Integer.parseInt(snapshoti.getKey()) > max[0]){
+                                max[0] = Integer.parseInt(snapshoti.getKey());
+                                max[0]=max[0]+1;
+                                ref.child(username);
+                                DatabaseReference dref = ref.child(max[0]+"");
+                                dref.setValue(map);
+                                finish();
+                            }
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
             }
         });
     }

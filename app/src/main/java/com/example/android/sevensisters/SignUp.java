@@ -42,7 +42,36 @@ public class SignUp extends AppCompatActivity {
             this.password = password;
             this.phone = phone;
         }
+    }
+    public static void addUser(String username_input, String password_input, String name_input, String email_input, String phone_input, String city_input){
+        DatabaseReference dbrf = FirebaseDatabase.getInstance().getReference();
+        HashMap<String,String> user_data = new HashMap<String,String>();
+        user_data.put("name",name_input.toString());
+        user_data.put("email",email_input.toString());
+        user_data.put("phone",phone_input.toString());
+        user_data.put("password",password_input.toString());
+        user_data.put("city",city_input.toString());
+        dbrf.child("users").child(username_input.toString());
+        DatabaseReference userKeyRef = dbrf.child("users").child(username_input.toString());
+        userKeyRef.setValue(user_data);
+    }
+    public static Boolean userExist(String username){
+        Boolean[] flag = {false};
+        DatabaseReference dbrf = FirebaseDatabase.getInstance().getReference("users");
+        dbrf.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.hasChild(username)){
+                    flag[0] =true;
+                }
+                return;
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+        return true;
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +115,7 @@ public class SignUp extends AppCompatActivity {
                     toast.show();
                     return;
                 }
-                if(! (email_input.toString().endsWith("gmail.com") || email_input.toString().endsWith("hotmail.com") ||email_input.toString().endsWith("rediffmail.com"))){
+                if(!(email_input.toString().endsWith("gmail.com") || email_input.toString().endsWith("hotmail.com") ||email_input.toString().endsWith("rediffmail.com"))){
                     Toast toast = new Toast(SignUp.this);
                     toast.setText("enter a valid email address that ends with \"gmail.com\" or \"hotmail.com\" or \"rediffmail.com\"");
                     toast.setDuration(Toast.LENGTH_LONG);

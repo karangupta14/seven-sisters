@@ -1,11 +1,14 @@
 package com.example.android.sevensisters;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -80,11 +83,18 @@ public class BlogActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ArrayList <Blog> blogs = new ArrayList<Blog>();
-                String title = snapshot.child(srp.getString("username",null)).child("title").getValue(String.class);
-                String display_name = snapshot.child(srp.getString("username",null)).child("display_name").getValue(String.class);
-                String content = snapshot.child(srp.getString("username",null)).child("content").getValue(String.class);
-                Blog blog  = new Blog(title,display_name,content);
-                blogs.add(blog);
+                int itr=0;
+                for(DataSnapshot snapshot1 : snapshot.getChildren()) {
+                    itr++;
+                    String username = snapshot1.child("username").getValue(String.class);
+                    String title = snapshot1.child("title").getValue(String.class);
+                    String display_name = snapshot1.child("display_name").getValue(String.class);
+                    String content = snapshot1.child("content").getValue(String.class);
+                    Blog blog = new Blog(username, title, display_name, content);
+                    Log.i(TAG, "onDataChange: "+blog.getUsername() + "---------------- " + blog.getContent());
+                    blogs.add(blog);
+                }
+
                 BlogAdapter adapter = new BlogAdapter(BlogActivity.this,blogs);
                 blog_list.setAdapter(adapter);
             }

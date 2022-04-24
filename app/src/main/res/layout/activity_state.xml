@@ -53,50 +53,77 @@
                 android:id="@+id/tourism_tab"
                 android:layout_width="95dp"
                 android:layout_height="match_parent"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center"
                 android:text="@string/locations"
-                android:textColor="#0197f6"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-    <!--        <TextView
-                android:id="@+id/hotel_dining_tab"
-                android:layout_width="95dp"
-                android:layout_height="match_parent"
                 android:clickable="true"
                 android:focusable="true"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:text="@string/hotels"
                 android:textColor="#0197f6"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/culture_history_tab"
-                android:layout_width="95dp"
-                android:layout_height="match_parent"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center"
-                android:text="@string/culture"
-                android:textColor="#0197f6"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
-            <TextView
+    <!--     <TextView
                 android:id="@+id/map_tab"
                 android:layout_width="95dp"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Map"
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="center"
-                android:text="Trip Brochures"
                 android:textColor="#0197f6"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-            -->
+                android:textSize="20sp"
+                android:textStyle="bold"/> -->
+            <!--        <TextView
+                        android:id="@+id/hotel_dining_tab"
+                        android:layout_width="95dp"
+                        android:layout_height="match_parent"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:text="@string/hotels"
+                        android:textColor="#0197f6"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/culture_history_tab"
+                        android:layout_width="95dp"
+                        android:layout_height="match_parent"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:text="@string/culture"
+                        android:textColor="#0197f6"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/map_tab"
+                        android:layout_width="95dp"
+                        android:layout_height="match_parent"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:text="Trip Brochures"
+                        android:textColor="#0197f6"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+                    -->
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/map_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:text="Open in maps"
+            android:textSize="15sp"
+            android:textStyle="bold|italic"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -104,7 +131,6 @@
         android:id="@+id/state_info"
         android:layout_width="match_parent"
         android:layout_height="395dp"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

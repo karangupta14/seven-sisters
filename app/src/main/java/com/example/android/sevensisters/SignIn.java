@@ -78,7 +78,6 @@ public class SignIn extends AppCompatActivity {
                             editor.putString("person_city",city).apply();
                             editor.putBoolean("logged_in",true).apply();
                             finish();
-
                         }
                         else{
                             Toast toast = new Toast(SignIn.this);

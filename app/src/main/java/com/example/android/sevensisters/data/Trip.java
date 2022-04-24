@@ -17,6 +17,7 @@ public class Trip {
         this.end_date=end_date;
         this.location_list=location_list;
         this.state_name=state_name;
+
     }
     public int getTrip_id() {
         return trip_id;

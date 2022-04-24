@@ -35,6 +35,15 @@ public class StateActivity extends AppCompatActivity {
         TextView state_name = findViewById(R.id.state_name);
         Log.i(TAG, "onCreate: hello world----------------------------------------------------");
         ListView listView = findViewById(R.id.state_info);
+        TextView map_button = findViewById(R.id.map_button);
+        map_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StateActivity.this,MapsActivity.class);
+                intent.putExtra("state",extras.getString("State"));
+                startActivity(intent);
+            }
+        });
         if(state.equals("assam")) {
             findViewById(R.id.state_image).setBackgroundResource(R.drawable.assam_state);
             state_name.setText("Assam");

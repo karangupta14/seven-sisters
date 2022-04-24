@@ -9,6 +9,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.android.sevensisters.AddTrip;
+import com.example.android.sevensisters.MainActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +19,6 @@ public class MyDbHandler extends SQLiteOpenHelper {
     public MyDbHandler (Context context){
         super(context, tripParams.DB_NAME,null,tripParams.DB_VERSION);
     }
-
     @Override
     public void onCreate(SQLiteDatabase db) {
         String create_trip_db = "CREATE TABLE " + tripParams.TABLE_NAME + " ( " + tripParams.TRIP_ID + " INTEGER PRIMARY KEY, " + tripParams.TABLE_COLUMN_STATE_NAME + " TEXT, "
@@ -24,18 +26,17 @@ public class MyDbHandler extends SQLiteOpenHelper {
         + tripParams.TABLE_COLUMN_REVIEW + " TEXT, "+ tripParams.TABLE_COLUMN_COMPLETE+ " TEXT" +" ) ";
         Log.d(TAG, "onCreate: "+ create_trip_db + "is being run------------------------------");
         db.execSQL(create_trip_db);
-
+        //this.db=db;
         /*String create_picture_db = "CREATE TABLE " + pictureParams.TABLE_NAME + " ( " + pictureParams.TABLE_COLUMN_TRIP_ID + " INTEGER, " + pictureParams.TABLE_COLUMN_PICTURE_ID + " INTEGER PRIMARY KEY, "
         + pictureParams.TABLE_COLUMN_PICTURE_BLOB + " BLOB "+ ")";
         Log.d(TAG, "onCreate: "+ create_picture_db + "is being run");
         db.execSQL(create_picture_db);*/
     }
-
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
-    public void addTrip(Trip row){
+    public boolean addTrip(Trip row){
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(tripParams.TABLE_COLUMN_COMPLETE,row.getTrip_id());
@@ -47,18 +48,20 @@ public class MyDbHandler extends SQLiteOpenHelper {
         Log.d(TAG, "addTrip: trip object successfully inserted");
         //values.put(tripParams.TABLE_COLUMN_REVIEW,row.getTrip_id());
         database.close();
+        return true;
     }
-    public void addPicture(Picture row){
+    public boolean addPicture(Picture row){
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(pictureParams.TABLE_COLUMN_TRIP_ID,row.getTrip_id());
         values.put(pictureParams.TABLE_COLUMN_PICTURE_ID,row.getPicture_id());
         values.put(pictureParams.TABLE_COLUMN_PICTURE_BLOB,row.getPicture_binary());
         database.insert(pictureParams.TABLE_NAME,null,values);
+        return true;
     }
     public List<Trip> getAllTrips(){
         List<Trip> trip_list = new ArrayList<>();
-        SQLiteDatabase db = getReadableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + tripParams.TABLE_NAME;
         Cursor cursor = db.rawQuery(query,null);
         if(cursor.moveToFirst()){
@@ -73,5 +76,15 @@ public class MyDbHandler extends SQLiteOpenHelper {
             }while(cursor.moveToNext());
         }
         return trip_list;
+    }
+    public int trip_count(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT COUNT(*) from" + tripParams.TABLE_NAME;
+        int total=0;
+        Cursor cursor = db.rawQuery(query,null);
+        if(cursor.moveToFirst()){
+            total = Integer.parseInt(cursor.getString(0));
+        }
+        return total;
     }
 }

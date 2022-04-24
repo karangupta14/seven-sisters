@@ -36,38 +36,7 @@ public class AddTrip extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference();
         Button add_trip_button = findViewById(R.id.add_trip_button);
-        //tourist count
-        //EditText tourist_count = findViewById(R.id.tourist_count);
-        /*ImageButton home = findViewById(R.id.home_icon);
-        Intent homeI = new Intent(this,MainActivity.class);
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(homeI);
-                overridePendingTransition(0, 0);
-                finish();
-            }
-        });
-        ImageButton profile = findViewById(R.id.profile_icon);
-        Intent profileI = new Intent(this,Profile.class);
-        profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(profileI);
-                overridePendingTransition(0, 0);
-                finish();
-            }
-        });
-        ImageButton discover = findViewById(R.id.discover_icon);
-        Intent discoverI = new Intent(this,Discover.class);
-        discover.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(discoverI);
-                overridePendingTransition(0, 0);
-                finish();
-            }
-        });*/
+
         Spinner spinnerStates=findViewById(R.id.state_spinner);
         ArrayAdapter<CharSequence>adapter= ArrayAdapter.createFromResource(this, R.array.state_list, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
@@ -75,8 +44,8 @@ public class AddTrip extends AppCompatActivity {
         //String state_selected = spinnerStates.getSelectedItem().toString();
         TextView locations = findViewById(R.id.state_locations);
         //String []locationsArray = {"Tawang", "Ziro Valley", "Roing", "Sela Pass", "Namdapha National Park", "Bomdila", "Dirang", "Tezu",
-          //      "Pasighat", "Nuranang Falls", "Mechuka", "Itanagar", "Along", "Bhalukpong", "Sangti", "Changlang", "Bumla Pass", "Anini", "Daporijo",
-            //    "Hayuliang Village", "Pakhui Wildlife Sanctuary", "Gorichen Peak"};
+        //      "Pasighat", "Nuranang Falls", "Mechuka", "Itanagar", "Along", "Bhalukpong", "Sangti", "Changlang", "Bumla Pass", "Anini", "Daporijo",
+        //    "Hayuliang Village", "Pakhui Wildlife Sanctuary", "Gorichen Peak"};
 
 
         // initialize selected language array
