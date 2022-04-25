@@ -40,7 +40,7 @@ public class StateActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(StateActivity.this,MapsActivity.class);
-                intent.putExtra("state",extras.getString("State"));
+                intent.putExtra("state",extras.getString("state"));
                 startActivity(intent);
             }
         });
