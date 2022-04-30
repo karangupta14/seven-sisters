@@ -38,7 +38,7 @@ public class AddTrip extends AppCompatActivity {
         Button add_trip_button = findViewById(R.id.add_trip_button);
 
         Spinner spinnerStates=findViewById(R.id.state_spinner);
-        ArrayAdapter<CharSequence>adapter= ArrayAdapter.createFromResource(this, R.array.state_list, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter= ArrayAdapter.createFromResource(this, R.array.state_list, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         spinnerStates.setAdapter(adapter);
         //String state_selected = spinnerStates.getSelectedItem().toString();
