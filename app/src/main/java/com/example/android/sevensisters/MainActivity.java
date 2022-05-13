@@ -6,7 +6,7 @@ import static java.security.AccessController.getContext;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.*;//AppCompatActivity;
 import android.content.Context;
 import android.content.Context;
 import android.content.Intent;
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         Intent signup = new Intent(this,SignUp.class);
         if(sdp_signup.contains("signup") == false)
         {
-             //openOrCreateDatabase()
+
              MyDbHandler dbHandler = new MyDbHandler(MainActivity.this);
              editor.putBoolean("signup",true).apply();
              editor.putBoolean("logged_in",false).apply();
@@ -97,16 +97,9 @@ public class MainActivity extends AppCompatActivity {
         else{
             Log.i(TAG, "onCreate: sign_up will not start-------------------------------------- ");
         }
-        //SharedPreferences sharedPreferences = this.getSharedPreferences();
+
         setContentView(R.layout.activity_main);
-        //View home = findViewById(R.id.home_icon);
-        //Intent homeIntent = new Intent(this,MainActivity.class);
-        //home.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View view) {
-        //        startActivity(homeIntent);
-        //    }
-        //});
+
         View profile = findViewById(R.id.profile_icon);
         Intent profileIntent = new Intent(this,Profile.class);
         profile.setOnClickListener(new View.OnClickListener() {
@@ -126,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
                 overridePendingTransition(0, 0);
             }
         });
+
         View discover = findViewById(R.id.discover_icon);
         Intent discoverIntent = new Intent(this,Discover.class);
         discover.setOnClickListener(new View.OnClickListener() {

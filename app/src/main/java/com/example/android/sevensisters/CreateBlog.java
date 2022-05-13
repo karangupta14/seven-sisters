@@ -1,18 +1,20 @@
 package com.example.android.sevensisters;
 
-import static android.provider.ContactsContract.Intents.Insert.ACTION;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.activity.result.*;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.appcompat.*;//AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,6 +26,7 @@ import java.util.HashMap;
 
 public class CreateBlog extends AppCompatActivity {
 
+    ActivityResultLauncher<String> take_photo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,13 +73,13 @@ public class CreateBlog extends AppCompatActivity {
                         for(DataSnapshot snapshoti : snapshot.getChildren()){
                             if(Integer.parseInt(snapshoti.getKey()) > max[0]){
                                 max[0] = Integer.parseInt(snapshoti.getKey());
-                                max[0]=max[0]+1;
-                                ref.child(username);
-                                DatabaseReference dref = ref.child(max[0]+"");
-                                dref.setValue(map);
-                                finish();
                             }
                         }
+                        max[0]=max[0]+1;
+                        ref.child(username);
+                        DatabaseReference dref = ref.child(max[0]+"");
+                        dref.setValue(map);
+                        finish();
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
@@ -86,5 +89,23 @@ public class CreateBlog extends AppCompatActivity {
 
             }
         });
+        Button upload_pic = findViewById(R.id.upload_pic_button);
+        /*upload_pic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                take_photo=registerForActivityResult(
+                        new ActivityResultContracts.GetContent(),
+                        new ActivityResultCallback<Uri>() {
+                            @Override
+                            public void onActivityResult(Uri result) {
+*
+                            }
+                        }
+                );
+            }
+        });*/
     }
 }
