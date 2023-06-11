@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
         android:layout_marginTop="36dp"
-        android:background="@drawable/rounded_corner_item"
+
         android:ems="10"
         android:gravity="left|top"
         android:hint="Write Something"
@@ -55,6 +55,7 @@
         android:layout_marginBottom="30dp"
         android:backgroundTint="#9ABC68"
         android:text="Upload pictures"
+        android:onClick="uploadPic"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,7 +77,8 @@
     <ListView
         android:id="@+id/blog_pic_list"
         android:layout_width="374dp"
-        android:layout_height="145dp"
+        android:orientation="horizontal"
+        android:layout_height="155dp"
         android:layout_marginTop="25dp"
         android:autofillHints="no pictures uploaded"
         app:layout_constraintEnd_toEndOf="parent"

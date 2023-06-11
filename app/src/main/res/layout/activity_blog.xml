@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFAF0"
+    android:background="#323334"
     tools:context=".BlogActivity">
 
     <TextView
@@ -27,6 +27,7 @@
         android:id="@+id/blog_frame"
         android:layout_width="413dp"
         android:layout_height="570dp"
+        android:foregroundGravity="center"
         android:layout_marginTop="100dp"
         app:layout_constraintBottom_toTopOf="@+id/include"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,9 +36,9 @@
 
         <ListView
             android:id="@+id/blog_list"
-            android:layout_width="390dp"
+            android:layout_width="356dp"
+            android:layout_height="544dp"
             android:layout_gravity="center"
-            android:layout_height="match_parent"
             android:foregroundGravity="bottom"></ListView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton

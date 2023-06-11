@@ -2,44 +2,78 @@ package com.example.android.sevensisters;
 
 import static android.content.ContentValues.TAG;
 
-import static java.security.AccessController.getContext;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.*;//AppCompatActivity;
-import android.content.Context;
+import androidx.appcompat.widget.SearchView;
+import androidx.core.content.ContextCompat;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.android.sevensisters.data.MyDbHandler;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.Map;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
 
+    private Geocoder geocoder;
+    GoogleMap googleMap ;
+    //final List<Address>[] locations = (List<Address>[]) new Object[1];
+    List<Address> locations =null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SharedPreferences sdp_signup =  getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sdp_signup.edit();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+        geocoder = new Geocoder(this);
+
+
+        Drawable drawable = ContextCompat.getDrawable(this,R.drawable.action_bar_back);
+
+        getSupportActionBar().setBackgroundDrawable(drawable);
+        //getSupportActionBar().setDisplayShowCustomEnabled(true);
+        ImageButton profileImageButton = new ImageButton(this);
+        profileImageButton.setMaxWidth(55);
+        profileImageButton.setMinimumWidth(53);
+        profileImageButton.setMaxHeight(62);
+        profileImageButton.setMinimumHeight(60);
+        profileImageButton.setBackgroundColor(Color.parseColor("#323334"));
+        profileImageButton.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.action_bar_back));
+        Intent profileInt;
+        ActionBar bar = getSupportActionBar();
+        bar.setDisplayShowCustomEnabled(true);
+        Intent intent = new Intent(this,Profile.class);
+        profileImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(intent);
+            }
+        });
+        ActionBar.LayoutParams params = new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT);
+        bar.setCustomView(profileImageButton,params);
         /*ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -100,6 +134,8 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+        // click listeners for activities
+
         View profile = findViewById(R.id.profile_icon);
         Intent profileIntent = new Intent(this,Profile.class);
         profile.setOnClickListener(new View.OnClickListener() {
@@ -139,5 +175,93 @@ public class MainActivity extends AppCompatActivity {
                 overridePendingTransition(0, 0);
             }
         });
+        ArrayList<suggestedLocation> list = new ArrayList<>();
+        list.add(new suggestedLocation("arunachal",""));
+        list.add(new suggestedLocation("assam",""));
+        list.add(new suggestedLocation("manipur",""));
+        list.add(new suggestedLocation("meghalaya",""));
+        list.add(new suggestedLocation("mizoram",""));
+        list.add(new suggestedLocation("nagaland",""));
+        list.add(new suggestedLocation("tripura",""));
+        suggestedAdapter adapter = new suggestedAdapter(this,list);
+        ListView suggested_list = findViewById(R.id.locations_list);
+        suggested_list.setAdapter(adapter);
+
+        //View map = findViewById(R.id.MapFragment);
+        //find search, location, search button
+
+        SearchView ser = findViewById(R.id.searchView);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.MapFragment);
+        assert mapFragment != null;
+        mapFragment.getMapAsync(this);   //this or this::OnMapReady
+        //Button searchButton = findViewById(R.id.searchLocationMain);
+        ser.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                //mapFragment.getMapAsync(MainActivity.this);
+                geocoder = new Geocoder(MainActivity.this);
+                try {
+                    locations =  geocoder.getFromLocationName(ser.getQuery().toString(), 1);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Address address=null;
+                if(locations!=null) {
+                    address = locations.get(0);
+                    MarkerOptions markerOptions1 = null;
+                    if (address != null) {
+                        markerOptions1 = new MarkerOptions().position(new LatLng(address.getLatitude(), address.getLongitude())).title(address.getLocality());
+                        googleMap.addMarker(markerOptions1);
+                    }
+                }
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+        suggested_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                suggestedLocation suggested_location = (suggestedLocation) suggested_list.getItemAtPosition(position);
+                String location_name = suggested_location.location_name;
+                String state_name = suggested_location.state;
+                ser.setQuery(location_name + "," + state_name,true);
+                Log.i(TAG, "onItemClick: -----------------helloooooooooooooooooooooooooooooooo-----------------------------------------------------------------------------------------------------");
+                Toast.makeText(MainActivity.this, "Position",   Toast.LENGTH_LONG).show();
+                addMarker(location_name + "," + state_name);   //callOnClick() also works
+            }
+        });
+    }
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+        this.googleMap = googleMap;
+        //updateLocationUI();
+        //updateMarkers();
+
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+        super.onPointerCaptureChanged(hasCapture);
+    }
+    void addMarker(String query){
+        SearchView ser = findViewById(R.id.searchView);
+        geocoder = new Geocoder(MainActivity.this);
+        try {
+            locations =  geocoder.getFromLocationName(ser.getQuery().toString(), 1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Address address=null;
+        if(locations!=null) {
+            address = locations.get(0);
+            MarkerOptions markerOptions1 = null;
+            if (address != null) {
+                markerOptions1 = new MarkerOptions().position(new LatLng(address.getLatitude(), address.getLongitude())).title(address.getLocality());
+                googleMap.addMarker(markerOptions1);
+            }
+        }
     }
 }

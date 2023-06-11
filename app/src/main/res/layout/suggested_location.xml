@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="110dp"
+
+
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/location_name"
+        android:textSize="15sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="" />
+
+    <ImageView
+        android:id="@+id/location_image"
+        android:padding="0dp"
+        android:foregroundGravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+</LinearLayout>

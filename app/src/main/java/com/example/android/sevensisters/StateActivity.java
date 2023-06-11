@@ -3,9 +3,11 @@ package com.example.android.sevensisters;
 import static android.content.ContentValues.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,7 +29,6 @@ public class StateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_state);
         Bundle extras = getIntent().getExtras();
         String state;
-
         if(savedInstanceState == null) {
             state = extras.getString("state");
         }
@@ -36,6 +37,8 @@ public class StateActivity extends AppCompatActivity {
         Log.i(TAG, "onCreate: hello world----------------------------------------------------");
         ListView listView = findViewById(R.id.state_info);
         TextView map_button = findViewById(R.id.map_button);
+        Drawable drawable = ContextCompat.getDrawable(this,R.drawable.action_bar_back);
+        getSupportActionBar().setBackgroundDrawable(drawable);
         map_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

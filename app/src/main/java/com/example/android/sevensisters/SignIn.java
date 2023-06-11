@@ -2,10 +2,12 @@ package com.example.android.sevensisters;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +35,8 @@ public class SignIn extends AppCompatActivity {
         EditText username_sign_in = findViewById(R.id.username_sign_in);
         EditText password_sign_in = findViewById(R.id.password_sign_in);
         Button login = findViewById(R.id.sign_in_button);
+        Drawable drawable = ContextCompat.getDrawable(this,R.drawable.action_bar_back);
+        getSupportActionBar().setBackgroundDrawable(drawable);
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
 
         login.setOnClickListener(new View.OnClickListener() {

@@ -1,10 +1,25 @@
 package com.example.android.sevensisters;
 
+import android.graphics.Bitmap;
+import android.net.Uri;
+
+import java.util.ArrayList;
+
 public class Blog {
     String display_name;
     String title;
     String content;
     String username;
+    boolean visibility;
+    ArrayList<Uri> blogImageList;
+
+    public ArrayList<Uri> getBlogImageList() {
+        return blogImageList;
+    }
+
+    public void setBlogImageList(ArrayList<Uri> blogImageList) {
+        this.blogImageList = blogImageList;
+    }
 
     public String getUsername() {
         return username;
@@ -43,5 +58,6 @@ public class Blog {
         this.title=title;
         this.display_name=display_name;
         this.content=content;
+        this.visibility=false;
     }
 }

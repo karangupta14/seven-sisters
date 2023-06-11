@@ -6,8 +6,8 @@
     android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="#323334"
     tools:context=".AddTrip">
-
 
   <TextView
       android:id="@+id/textView"
@@ -17,7 +17,7 @@
       android:layout_marginTop="36dp"
       android:text="Plan a trip in north-east"
       android:textAlignment="center"
-      android:textColor="@color/black"
+      android:textColor="#28ACEA"
       android:textSize="25sp"
 
       android:textStyle="bold|italic"
@@ -32,6 +32,7 @@
       android:layout_marginTop="60dp"
       android:text="Select State"
       android:textSize="20sp"
+      android:textColor="#28ACEA"
       android:textStyle="bold"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -40,6 +41,7 @@
       android:id="@+id/state_spinner"
       android:layout_width="150dp"
       android:layout_height="40dp"
+      android:background="#454545"
       android:layout_marginStart="15dp"
       android:layout_marginTop="20dp"
       android:layout_weight="1"
@@ -58,6 +60,7 @@
       android:clickable="true"
       android:focusable="true"
       android:padding="5dp"
+      android:elevation="4dp"
       android:text="Add"
       android:textAlignment="center"
       android:textColor="@color/white"
@@ -76,6 +79,7 @@
       android:layout_marginTop="50dp"
       android:backgroundTint="#9ABC68"
       android:textStyle="bold"
+      android:elevation="4dp"
       android:text="@string/start_journey"
       android:textColor="@color/white"
       android:textSize="10sp"
@@ -90,6 +94,7 @@
       android:layout_marginStart="16dp"
       android:layout_marginTop="30dp"
       android:backgroundTint="#9ABC68"
+      android:elevation="4dp"
       android:padding="2dp"
       android:text="END AT"
       android:textColor="@color/white"
@@ -117,8 +122,11 @@
       android:layout_height="wrap_content"
       android:layout_marginStart="15dp"
       android:layout_marginTop="56dp"
+      android:elevation="4dp"
+      android:background="#454545"
       android:text="Pick Locations"
       android:textSize="20sp"
+      android:textColor="#28ACEA"
       android:textStyle="bold"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/state_spinner" />
@@ -128,8 +136,10 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="20dp"
+
       android:layout_marginStart="15dp"
       android:text="@string/locations"
+      android:textColor="@color/white"
       android:textSize="13sp"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/pick_state" />
@@ -146,9 +156,11 @@
 
   <TextView
       android:id="@+id/start_date"
-      android:layout_width="wrap_content"
-      android:layout_height="25dp"
+      android:layout_width="150dp"
+      android:layout_height="35dp"
       android:layout_marginStart="45dp"
+      android:textColor="@color/white"
+      android:background="#454545"
       android:layout_marginTop="8dp"
       android:textSize="20sp"
       app:layout_constraintStart_toEndOf="@+id/set_start_date"
@@ -156,8 +168,9 @@
 
   <TextView
       android:id="@+id/end_date"
-      android:layout_width="wrap_content"
-      android:layout_height="25dp"
+      android:layout_width="150dp"
+      android:layout_height="35dp"
+      android:background="#454545"
       android:layout_marginStart="45dp"
       android:layout_marginTop="8dp"
       android:textSize="20sp"

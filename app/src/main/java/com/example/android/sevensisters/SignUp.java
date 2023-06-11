@@ -3,10 +3,12 @@ package com.example.android.sevensisters;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatEditText$InspectionCompanion;
+import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.Editable;
@@ -83,7 +85,8 @@ public class SignUp extends AppCompatActivity {
         EditText password = findViewById(R.id.password_signup);
         EditText phone = findViewById(R.id.phone_signup);
         EditText city = findViewById(R.id.location_signup);
-
+        Drawable drawable = ContextCompat.getDrawable(this,R.drawable.action_bar_back);
+        getSupportActionBar().setBackgroundDrawable(drawable);
         FirebaseDatabase fdb = FirebaseDatabase.getInstance();
         DatabaseReference dbrf = fdb.getReference();//"https://sevensisters-8bd65-default-rtdb.firebaseio.com/"
         //DatabaseReference user_details = dbrf.child("user_details");

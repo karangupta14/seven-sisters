@@ -3,11 +3,13 @@ package com.example.android.sevensisters;
 import static android.content.ContentValues.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -33,6 +35,8 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         View home = findViewById(R.id.home_icon);
+        Drawable drawable = ContextCompat.getDrawable(this,R.drawable.action_bar_back);
+        getSupportActionBar().setBackgroundDrawable(drawable);
         Intent homeIntent = new Intent(this,MainActivity.class);
         home.setOnClickListener(new View.OnClickListener() {
             @Override

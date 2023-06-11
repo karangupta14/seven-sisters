@@ -1,8 +1,10 @@
 package com.example.android.sevensisters;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -23,6 +25,8 @@ public class Discover extends AppCompatActivity {
         ImageButton manipur = findViewById(R.id.manipur_image);
         ImageButton nagaland = findViewById(R.id.nagaland_image);
         ImageButton arunachal = findViewById(R.id.arunachal_image);
+        Drawable drawable = ContextCompat.getDrawable(this,R.drawable.action_bar_back);
+        getSupportActionBar().setBackgroundDrawable(drawable);
         Intent state = new Intent(this, StateActivity.class);
         assam.setOnClickListener(new View.OnClickListener() {
             @Override

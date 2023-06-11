@@ -36,7 +36,7 @@ public class LocationAdapter extends ArrayAdapter<location> {
     TabLayout.OnTabSelectedListener context;
     String state;
     public LocationAdapter(Context context, List <location> objects, String state){
-        super((Context) context,0,objects);
+        super(context,0,objects);
         this.state = state;
     }
 

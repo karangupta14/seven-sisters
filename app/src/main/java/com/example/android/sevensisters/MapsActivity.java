@@ -25,8 +25,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(binding.getRoot());
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         extras = getIntent().getExtras();
 
@@ -45,30 +44,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         String state = extras.getString("state");
-        LatLng lat = new LatLng(26, 92);
+        LatLng latLng = new LatLng(26, 92);
         if(state.equals("meghalaya")){
-            lat = new LatLng(25, 90);
+            latLng = new LatLng(25, 90);
         }
         if(state.equals("tripura")){
-            lat = new LatLng(23, 91);
+            latLng = new LatLng(23, 91);
         }
         if(state.equals("mizoram")){
-            lat = new LatLng(21, 92);
+            latLng = new LatLng(21, 92);
         }
         if(state.equals("arunachal")){
-            lat = new LatLng(28, 95);
+            latLng = new LatLng(28, 95);
         }
         if(state.equals("manipur")){
-            lat = new LatLng(24, 93);
+            latLng = new LatLng(24, 93);
         }
         if(state.equals("nagaland")){
-            lat = new LatLng(26, 94);
+            latLng = new LatLng(26, 94);
         }
         // Add a marker in Sydney and move the camera
         //LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(lat).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(lat));
-
+        mMap.addMarker(new MarkerOptions().position(latLng).title("Marker in Sydney"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+        mMap.setMinZoomPreference(12);
+        mMap.setMaxZoomPreference(14);
 
     }
 }

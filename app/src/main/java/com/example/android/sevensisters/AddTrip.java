@@ -4,10 +4,12 @@ import static android.content.ContentValues.TAG;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -38,6 +40,9 @@ public class AddTrip extends AppCompatActivity {
         Button add_trip_button = findViewById(R.id.add_trip_button);
 
         Spinner spinnerStates=findViewById(R.id.state_spinner);
+        Drawable drawable = ContextCompat.getDrawable(this,R.drawable.action_bar_back);
+        getSupportActionBar().setBackgroundDrawable(drawable);
+
         ArrayAdapter<CharSequence> adapter= ArrayAdapter.createFromResource(this, R.array.state_list, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         spinnerStates.setAdapter(adapter);
@@ -252,7 +257,7 @@ public class AddTrip extends AppCompatActivity {
             }
         });
 
-        ImageButton add_trip = findViewById(R.id.add_trip_icon);
+        //ImageButton add_trip = findViewById(R.id.add_trip_icon);
         //destination
         add_trip_button.setOnClickListener(new View.OnClickListener() {
             @Override
