@@ -1,12 +1,16 @@
 package com.example.android.sevensisters;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -28,6 +32,28 @@ public class Discover extends AppCompatActivity {
         Drawable drawable = ContextCompat.getDrawable(this,R.drawable.action_bar_back);
         getSupportActionBar().setBackgroundDrawable(drawable);
         Intent state = new Intent(this, StateActivity.class);
+        /* Adding profile icon on Action Bar*/
+        ImageButton profileImageButton = new ImageButton(this);
+        profileImageButton.setMaxWidth(55);
+        profileImageButton.setMinimumWidth(53);
+        profileImageButton.setMaxHeight(30);
+        profileImageButton.setMinimumHeight(30);
+        profileImageButton.setBackgroundColor(Color.parseColor("#3B3C36"));
+        profileImageButton.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.profile_icon));
+        Intent profileInt;
+        ActionBar bar = getSupportActionBar();
+        bar.setDisplayShowCustomEnabled(true);
+        Intent intent = new Intent(this,Profile.class);
+        profileImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(intent);
+            }
+        });
+        ActionBar.LayoutParams params = new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT);
+        ActionBar.LayoutParams params1 = new ActionBar.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.RIGHT);
+        bar.setCustomView(profileImageButton,params1);
+        /*-----------------------Added profile icon on Action Bar-------------------------------------*/
         assam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

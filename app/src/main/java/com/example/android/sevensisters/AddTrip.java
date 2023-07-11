@@ -2,6 +2,7 @@ package com.example.android.sevensisters;
 
 import static android.content.ContentValues.TAG;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -9,10 +10,13 @@ import androidx.core.content.ContextCompat;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -42,7 +46,28 @@ public class AddTrip extends AppCompatActivity {
         Spinner spinnerStates=findViewById(R.id.state_spinner);
         Drawable drawable = ContextCompat.getDrawable(this,R.drawable.action_bar_back);
         getSupportActionBar().setBackgroundDrawable(drawable);
-
+        /* Adding profile icon on Action Bar*/
+        ImageButton profileImageButton = new ImageButton(this);
+        profileImageButton.setMaxWidth(55);
+        profileImageButton.setMinimumWidth(53);
+        profileImageButton.setMaxHeight(30);
+        profileImageButton.setMinimumHeight(30);
+        profileImageButton.setBackgroundColor(Color.parseColor("#3B3C36"));
+        profileImageButton.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.profile_icon));
+        Intent profileInt;
+        ActionBar bar = getSupportActionBar();
+        bar.setDisplayShowCustomEnabled(true);
+        Intent intent = new Intent(this,Profile.class);
+        profileImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(intent);
+            }
+        });
+        ActionBar.LayoutParams params = new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT);
+        ActionBar.LayoutParams params1 = new ActionBar.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.RIGHT);
+        bar.setCustomView(profileImageButton,params1);
+        /*-----------------------Added profile icon on Action Bar-------------------------------------*/
         ArrayAdapter<CharSequence> adapter= ArrayAdapter.createFromResource(this, R.array.state_list, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         spinnerStates.setAdapter(adapter);
