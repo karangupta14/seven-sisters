@@ -61,14 +61,13 @@
 
     <FrameLayout
         android:id="@+id/frameLayout"
-        android:layout_width="wrap_content"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="65dp"
         android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
         <ListView
             android:id="@+id/locations_list"
             android:layout_width="330dp"
@@ -84,14 +83,13 @@
             android:smoothScrollbar="true"
             tools:layout_editor_absoluteX="22dp"
             tools:layout_editor_absoluteY="99dp" />
-
         <androidx.appcompat.widget.SearchView
             android:id="@+id/searchView"
-            android:layout_width="200dp"
+            android:layout_width="250dp"
             android:layout_height="42dp"
-            android:layout_gravity="center"
-            android:layout_margin="15dp"
-
+            android:layout_gravity="top|center"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/rounded_corner_item"
             android:focusable="false"
             android:focusableInTouchMode="false"
@@ -136,7 +134,7 @@
         android:layout_marginTop="0dp"
         android:layout_marginEnd="5dp"
         android:background="#3B3C36"
-
+        android:visibility="gone"
         android:focusable="false"
         android:focusableInTouchMode="false"
         app:layout_constraintEnd_toEndOf="parent"

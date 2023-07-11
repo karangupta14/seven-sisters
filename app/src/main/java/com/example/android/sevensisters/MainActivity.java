@@ -16,9 +16,11 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -55,13 +57,16 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         getSupportActionBar().setBackgroundDrawable(drawable);
         //getSupportActionBar().setDisplayShowCustomEnabled(true);
+        FrameLayout layout = findViewById(R.id.frameLayout);
+        //ListView locations_list = layout.findViewById(R.id.locations_list);
+        //locations_list.setRotation(90f);
         ImageButton profileImageButton = new ImageButton(this);
         profileImageButton.setMaxWidth(55);
         profileImageButton.setMinimumWidth(53);
-        profileImageButton.setMaxHeight(62);
-        profileImageButton.setMinimumHeight(60);
-        profileImageButton.setBackgroundColor(Color.parseColor("#323334"));
-        profileImageButton.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.action_bar_back));
+        profileImageButton.setMaxHeight(30);
+        profileImageButton.setMinimumHeight(30);
+        profileImageButton.setBackgroundColor(Color.parseColor("#3B3C36"));
+        profileImageButton.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.profile_icon));
         Intent profileInt;
         ActionBar bar = getSupportActionBar();
         bar.setDisplayShowCustomEnabled(true);
@@ -73,7 +78,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
         ActionBar.LayoutParams params = new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT);
-        bar.setCustomView(profileImageButton,params);
+        ActionBar.LayoutParams params1 = new ActionBar.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.RIGHT);
+        bar.setCustomView(profileImageButton,params1);
         /*ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
