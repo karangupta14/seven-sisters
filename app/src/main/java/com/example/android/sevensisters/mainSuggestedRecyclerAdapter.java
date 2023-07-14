@@ -39,7 +39,7 @@ public class mainSuggestedRecyclerAdapter extends RecyclerView.Adapter<RecyclerV
 
     @Override
     public int getItemCount() {
-        return 0;
+        return locations.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{

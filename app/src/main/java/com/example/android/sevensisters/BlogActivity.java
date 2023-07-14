@@ -137,27 +137,6 @@ public class BlogActivity extends AppCompatActivity {
                     }
                     //blogs.get(i).setBlogImageList(imageList);
                 }*/
-                for(DataSnapshot snapshot1 : snapshot.getChildren()) {
-                    itr++;
-                    String username = snapshot1.child("username").getValue(String.class);
-                    String title = snapshot1.child("title").getValue(String.class);
-                    String display_name = snapshot1.child("display_name").getValue(String.class);
-                    String content = snapshot1.child("content").getValue(String.class);
-
-                    /*ArrayList<Bitmap> imagesAsByteArray = new ArrayList<Bitmap>();
-                    Bitmap bitmap;
-                    for(int i=0; ; ++i) {
-                        if (snapshot1.child("pictures").exists() && snapshot1.child("pics").child("image" + i).exists()) {
-                            bitmap = snapshot1.child("blogs").child("image" + i).getValue(Bitmap.class);
-                            imagesAsByteArray.add(bitmap);
-                        }
-                        else break;
-                    }
-                    //ArrayList<?> blogImageList = snapshot1.child("blogImageList").getValue(ArrayList<?>.class);*/
-                    Blog blog = new Blog(username, title, display_name, content);
-                    Log.i(TAG, "onDataChange: "+blog.getUsername() + "---------------- " + blog.getContent());
-                    blogs.add(blog);
-                }
                 BlogAdapter adapter = new BlogAdapter(BlogActivity.this,blogs);
                 blog_list.setAdapter(adapter);
             }

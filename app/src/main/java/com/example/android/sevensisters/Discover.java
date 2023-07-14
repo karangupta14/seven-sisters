@@ -32,7 +32,7 @@ public class Discover extends AppCompatActivity {
         Drawable drawable = ContextCompat.getDrawable(this,R.drawable.action_bar_back);
         getSupportActionBar().setBackgroundDrawable(drawable);
         Intent state = new Intent(this, StateActivity.class);
-        /* Adding profile icon on Action Bar*/
+        /*------------------- Adding profile icon on Action Bar------------*/
         ImageButton profileImageButton = new ImageButton(this);
         profileImageButton.setMaxWidth(55);
         profileImageButton.setMinimumWidth(53);
